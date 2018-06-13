@@ -38,7 +38,7 @@ function personMaker() {
     // replace `null` with a function that uses self reference to return
     // full name
     fullName: function() {
-      return console.log(`${this.firstName} and ${this.lastName}.`);
+      return (`${this.firstName} and ${this.lastName}.`);
     },
   };
   return person;
@@ -66,3 +66,18 @@ function keyDeleter(obj) {
 }
 
 console.log(keyDeleter(sampleObj));
+
+//Make Student reports
+
+function makeStudentReport(data) {
+  return data.map(function(student) {
+    return `${student.name}: ${student.grade}`;
+  });
+}
+
+const testData = [
+  { name: 'Jane Doe', grade: 'A' },
+  { name: 'John Dough', grade: 'B' },
+  { name: 'Jill Do', grade: 'A' },];
+
+console.log(makeStudentReport(testData));
