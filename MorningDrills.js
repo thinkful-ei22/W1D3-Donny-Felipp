@@ -47,3 +47,22 @@ function personMaker() {
 let ourPerson = personMaker(); 
 
 console.log(ourPerson.fullName());
+
+//Delete Keys
+
+const sampleObj = {
+  foo: 'foo',
+  bar: 'bar',
+  bizz: 'bizz',
+  bang: 'bang',
+};
+
+function keyDeleter(obj) {
+  // your code here
+  delete obj['foo'];
+  delete obj['bar'];
+  
+  return obj;
+}
+
+console.log(keyDeleter(sampleObj));
