@@ -56,4 +56,14 @@ console.log(people.map(function(person) {
   return `${person.name} is a ${person.jobTitle}.`;
 }));
 
+// 5. Properties that aren't there
 
+personDonny.boss = 'Filipp';
+personBob.boss = 'Filipp';
+
+
+console.log(people.map(function(person) {
+  if(person.hasOwnProperty('boss')){return `${person.jobTitle} ${person.name} reports to ${person.boss}`;}
+  else {return `${person.jobTitle} ${person.name} doesn't report to anybody.`};
+  
+}));
