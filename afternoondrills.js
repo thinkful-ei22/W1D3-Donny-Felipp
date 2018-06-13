@@ -98,3 +98,58 @@ function decode(Array) {
 }
 
 console.log(decode(wordArray));
+
+//7 . Factory Functions with LOTR
+
+function createCharacter(name,nickname,race,origin,attack,defense){
+
+  return{
+    name:name,
+    nickname:nickname,
+    race:race,
+    origin:origin,
+    attack:attack,
+    defense:defense,
+    describe:function(){
+      console.log(`${this.name} is a ${this.race} from ${this.origin}.`);
+    },
+    evaluateFight:function(character){
+      let otherDamage = this.attack - character.defense;
+      let myDamage = character.attack - this.defense;
+        
+      if(otherDamage <= 0){otherDamage=0;};
+      if(myDamage <= 0){myDamage=0};
+        
+      console.log(`Your opponent takes ${otherDamage} damage and you receive ${myDamage} damage`);
+
+    }
+
+  };
+}
+
+let characters=[
+  createCharacter('Bilbo Baggins','bilbo','Hobbit','The Shire',2,1),
+  createCharacter('Gandalf The White','gandalf','Wizard','Middle Earth',10,6),
+  createCharacter('Frodo Baggins','frodo','Hobbit','The Shire',3,2),
+  createCharacter('Aragorn son of Arathorn','aragorn','Man','Dunnedain',6,8),
+  createCharacter('Legolas','legolas','Elf','Woodland Realm',8,5) 
+];
+
+//console.log(characters);
+
+characters.push(createCharacter('Arwen Undomiel','arwen','Half-Elf','Rivendell',8,5) );
+
+//characters[0].evaluateFight(characters[1]);
+
+characters.find(function(character){
+  if (character.nickname === 'aragorn'){
+    character.describe();
+  }
+});
+
+//console.log(characters.filter( character => character.race === 'Hobbit'));
+console.log(characters.filter( character => character.attack >  5));
+
+//What if you wanted to equip a weapon for each character and change how they are described? 
+// Well, you would add another property to the factory function like 'weapon'
+//and then you could add another method that would print out what kind of weapon they use
