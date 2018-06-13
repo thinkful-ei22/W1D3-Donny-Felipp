@@ -64,6 +64,37 @@ personBob.boss = 'Filipp';
 
 console.log(people.map(function(person) {
   if(person.hasOwnProperty('boss')){return `${person.jobTitle} ${person.name} reports to ${person.boss}`;}
-  else {return `${person.jobTitle} ${person.name} doesn't report to anybody.`};
-  
+  else {return `${person.jobTitle} ${person.name} doesn't report to anybody.`;}
 }));
+
+//Cracking the code
+
+let words = 'craft block argon meter bells brown croon droop';
+
+const cipher = {
+  a: 2,
+  b: 3,
+  c: 4,
+  d: 5
+};
+
+let wordArray = words.split(' ');
+
+function decode(Array) {
+  const results = [];
+  Array.map(function(word) {
+    if (cipher.hasOwnProperty(word[0])) {
+      for (let key in cipher) {
+        if (word[0] === key) {
+          results.push(word[cipher[key] - 1]);
+        }
+      }
+    }
+    else {
+      results.push(' ');
+    }
+  });
+  return results.join('');
+}
+
+console.log(decode(wordArray));
